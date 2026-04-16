@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Nodo Sicurezza Energea 33</title>
+
+<style>
+body {
+    background-color: black;
+    color: #00ff9c;
+    font-family: monospace;
+    text-align: center;
+    padding-top: 100px;
+}
+input, button {
+    padding: 10px;
+    font-size: 16px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>NODO DI CONTENIMENTO DATI</h1>
+<p>Protocollo: <span style="color:red;">ATTIVO</span></p>
+
+<h2>Tempo alla pubblicazione:</h2>
+<div id="timer">24:00:00</div>
+
+<br>
+
+<input type="text" id="codice" placeholder="Inserisci codice">
+<button onclick="verificaCodice()">INVIA</button>
+
+<p id="messaggio"></p>
+
+<script>
+let tempo = 86400;
+
+function aggiornaTimer() {
+    let ore = Math.floor(tempo / 3600);
+    let minuti = Math.floor((tempo % 3600) / 60);
+    let secondi = tempo % 60;
+
+    document.getElementById("timer").innerText =
+        ore + ":" + minuti + ":" + secondi;
+
+    if (tempo > 0) tempo--;
+}
+
+setInterval(aggiornaTimer, 1000);
+
+function verificaCodice() {
+    let codice = document.getElementById("codice").value;
+
+    if (codice === "E33-7421") {
+        tempo = 86400;
+        document.getElementById("messaggio").innerText =
+            "✔ Codice accettato. Pubblicazione rinviata.";
+    } else {
+        document.getElementById("messaggio").innerText =
+            "✖ Codice errato. Accesso registrato.";
+    }
+}
+</script>
+
+</body>
+</html>
