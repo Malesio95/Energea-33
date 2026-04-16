@@ -35,17 +35,23 @@ input, button {
 <p id="messaggio"></p>
 
 <script>
-let tempo = 86400;
+const scadenza = new Date("2026-04-16T11:00:00").getTime();
 
 function aggiornaTimer() {
-    let ore = Math.floor(tempo / 3600);
-    let minuti = Math.floor((tempo % 3600) / 60);
-    let secondi = tempo % 60;
+    const oraAdesso = new Date().getTime();
+    const differenza = scadenza - oraAdesso;
+
+    if (differenza <= 0) {
+        document.getElementById("timer").innerText = "00:00:00";
+        return;
+    }
+
+    let ore = Math.floor(differenza / (1000 * 60 * 60));
+    let minuti = Math.floor((differenza % (1000 * 60 * 60)) / (1000 * 60));
+    let secondi = Math.floor((differenza % (1000 * 60)) / 1000);
 
     document.getElementById("timer").innerText =
         ore + ":" + minuti + ":" + secondi;
-
-    if (tempo > 0) tempo--;
 }
 
 setInterval(aggiornaTimer, 1000);
@@ -54,12 +60,11 @@ function verificaCodice() {
     let codice = document.getElementById("codice").value;
 
     if (codice === "E33-7421") {
-        tempo = 86400;
         document.getElementById("messaggio").innerText =
-            "✔ Codice accettato. Pubblicazione rinviata.";
+            "✔ Codice accettato. Pubblicazione rinviata da nodo centrale.";
     } else {
         document.getElementById("messaggio").innerText =
-            "✖ Codice errato. Accesso registrato.";
+            "✖ Codice errato. Tentativo registrato.";
     }
 }
 </script>
