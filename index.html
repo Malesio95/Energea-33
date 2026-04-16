@@ -50,7 +50,7 @@ input, button {
 <p id="messaggio"></p>
 
 <script>
-const scadenza = new Date("2026-04-16T11:04:00").getTime();
+let scadenza = new Date("2026-04-16T11:43:00").getTime();
 
 function aggiornaTimer() {
     const oraAdesso = new Date().getTime();
@@ -79,9 +79,13 @@ setInterval(aggiornaTimer, 1000);
 function verificaCodice() {
     let codice = document.getElementById("codice").value;
 
-    if (codice === "E33-7421") {
-        document.getElementById("messaggio").innerText =
-            "✔ Codice accettato. Pubblicazione rinviata da nodo centrale.";
+   if (codice === "E33-7421") {
+
+    // aggiunge 24 ore alla scadenza
+    scadenza = scadenza + (24 * 60 * 60 * 1000);
+
+    document.getElementById("messaggio").innerText =
+        "✔ Codice accettato. Pubblicazione rinviata di 24 ore.";
     } else {
         document.getElementById("messaggio").innerText =
             "✖ Codice errato. Tentativo registrato.";
