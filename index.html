@@ -35,7 +35,7 @@ input, button {
 <p id="messaggio"></p>
 
 <script>
-let SCAD = new Date("2026-04-21T18:30:00").getTime();
+let SCAD = new Date("2026-04-21T18:33:00").getTime();
 
 function aggiornaTimer() {
     const oraAdesso = new Date().getTime();
@@ -67,7 +67,7 @@ function verificaCodice() {
    if (codice === "E33-7421") {
 
     // aggiunge 24 ore alla scadenza
-    SCAD += 86399000;
+    SCAD = SCAD + 86399000;
 
     document.getElementById("messaggio").innerText =
         "✔ Codice accettato. Pubblicazione rinviata di 24 ore.";
