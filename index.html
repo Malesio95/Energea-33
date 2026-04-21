@@ -35,7 +35,7 @@ input, button {
 <p id="messaggio"></p>
 
 <script>
-let SCAD = new Date("2026-04-21T16:56:00").getTime();
+let SCAD = new Date("2026-04-21T17:12:00").getTime();
 
 function aggiornaTimer() {
     const oraAdesso = new Date().getTime();
@@ -147,7 +147,16 @@ if (i < logTesti.length) {
 
 <br>
 
-<div id="logDati"></div>
+<div id="logDati" style="
+    width: 70%;
+    margin: auto;
+    height: 200px;
+    overflow-y: auto;
+    text-align: left;
+    border: 1px solid #00ff9c;
+    padding: 10px;
+    font-size: 14px;
+"></div>
 
 </div>
 </html>
