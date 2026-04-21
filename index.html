@@ -35,14 +35,17 @@ input, button {
 <p id="messaggio"></p>
 
 <script>
-let SCAD = new Date("2026-04-21T18:33:00").getTime();
+let SCAD = new Date("2026-04-21T18:40:00").getTime();
 
 function aggiornaTimer() {
     const oraAdesso = new Date().getTime();
     const differenza = SCAD - oraAdesso;
 
     if (differenza <= 0) {
-    document.getElementById("timer").innerText = "00:00:00";
+   document.getElementById("timer").innerText =
+    String(ore).padStart(2, "0") + ":" +
+    String(minuti).padStart(2, "0") + ":" +
+    String(secondi).padStart(2, "0");
 
     document.getElementById("schermataPubblicazione").style.display = "block";
 
@@ -130,7 +133,7 @@ if (i < logTesti.length) {
     i++;
 }
 
-    }, 180);
+    }, 250);
 }
 </script>
 
